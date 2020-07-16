@@ -1,18 +1,40 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="container">
+    <HelloWorld msg="Random Eater"/>
+	<button v-on:click="test()" class="btn btn-success">Let's Start !</button>
+	<div class="row">
+		<PlaceCard v-bind:place="jsonData[random]" />
+	</div>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import PlaceCard from './components/PlaceCard.vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import json from './json/data.json'
+import axios from 'axios'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+	name: 'App',
+	components: {
+		HelloWorld,
+		PlaceCard
+	},
+	data() {
+		return {
+			jsonData: json,
+			random: 0
+		}
+	},
+	methods: {
+		test: function () {
+			this.random = Math.floor(Math.random() * Math.floor(this.jsonData.length))
+
+			axios.get("https://www.reddit.com", { crossdomain: true }).then( res => { console.log(res) })
+		}
+	}
 }
 </script>
 
