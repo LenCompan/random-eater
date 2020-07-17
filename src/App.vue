@@ -3,7 +3,7 @@
     <HelloWorld msg="Random Eater"/>
 	<button v-on:click="getAPlace()" class="btn btn-success">Let's Start !</button>
 	<div class="row">
-		<PlaceCard v-bind:place="jsonData[random]" />
+		<PlaceCard v-if="random !== null" v-bind:place="jsonData[random]" />
 	</div>
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
 	data() {
 		return {
 			jsonData: json,
-			random: 0
+			random: null
 		}
 	},
 	methods: {
