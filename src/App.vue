@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container">
     <HelloWorld msg="Random Eater"/>
-	<button v-on:click="test()" class="btn btn-success">Let's Start !</button>
+	<button v-on:click="getAPlace()" class="btn btn-success">Let's Start !</button>
 	<div class="row">
 		<PlaceCard v-bind:place="jsonData[random]" />
 	</div>
@@ -29,10 +29,8 @@ export default {
 		}
 	},
 	methods: {
-		test: function () {
-			this.random = Math.floor(Math.random() * Math.floor(this.jsonData.length))
-
-			axios.get("https://www.reddit.com", { crossdomain: true }).then( res => { console.log(res) })
+		getAPlace: function () {
+			this.random = Math.floor(Math.random() * Math.floor(this.jsonData.length));
 		}
 	}
 }
