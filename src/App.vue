@@ -14,7 +14,6 @@ import PlaceCard from './components/PlaceCard.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import json from './json/data.json'
-import axios from 'axios'
 
 export default {
 	name: 'App',
