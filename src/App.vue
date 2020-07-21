@@ -14,6 +14,7 @@ import PlaceCard from './components/PlaceCard.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import json from './json/data.json'
+import axios from 'axios'
 
 export default {
 	name: 'App',
@@ -31,6 +32,10 @@ export default {
 		getAPlace: function () {
 			this.random = Math.floor(Math.random() * Math.floor(this.jsonData.length));
 		}
+	},
+	mounted () {
+		axios.get('https://devel.perrotin.com/random-eater/data.json')
+		.then( res => { this.jsonData = res.data} );
 	}
 }
 </script>
