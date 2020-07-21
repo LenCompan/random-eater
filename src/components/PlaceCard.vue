@@ -9,7 +9,7 @@
 				<b-card-body v-bind:title="place.name">
 				<b-card-text>
 					{{ place.place }}<br>
-					{{ place.description }}
+					{{ place.description }}<br>
 					<a :href="place.link" >{{ place.link }}</a>
 				</b-card-text>
 				</b-card-body>
