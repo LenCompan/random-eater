@@ -10,6 +10,7 @@
 				<b-card-text>
 					{{ place.place }}<br>
 					{{ place.description }}
+					<a :href="place.link" >{{ place.link }}</a>
 				</b-card-text>
 				</b-card-body>
 			</b-col>
