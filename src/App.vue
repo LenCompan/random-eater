@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container">
     <HelloWorld msg="Random Eater"/>
-	<input v-model="message" placeholder="Import json url">
+	<input v-model="message" placeholder="Import json url"><br>
 	<button v-on:click="getAPlace()" class="btn btn-success">Let's Start !</button>
 	<div class="row">
 		<PlaceCard v-if="random !== null" v-bind:place="jsonData[random]" />
