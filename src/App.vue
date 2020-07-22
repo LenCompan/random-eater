@@ -1,6 +1,7 @@
 <template>
   <div id="app" class="container">
     <HelloWorld msg="Random Eater"/>
+	<input v-model="message" placeholder="Import json url">
 	<button v-on:click="getAPlace()" class="btn btn-success">Let's Start !</button>
 	<div class="row">
 		<PlaceCard v-if="random !== null" v-bind:place="jsonData[random]" />
@@ -25,17 +26,27 @@ export default {
 	data() {
 		return {
 			jsonData: json,
-			random: null
+			random: null,
+			message: null,
+			old_message: null
 		}
 	},
 	methods: {
 		getAPlace: function () {
+			if (this.message != null && this.old_message != this.message) {
+				this.old_message = this.message;
+				this.getJson();
+				return ;
+			}
+
 			this.random = Math.floor(Math.random() * Math.floor(this.jsonData.length));
+		},
+		getJson: function () {
+			axios.get(this.message).then( (res) => {
+				this.jsonData = res.data;
+				this.random = Math.floor(Math.random() * Math.floor(this.jsonData.length));
+			});
 		}
-	},
-	mounted () {
-		axios.get('https://devel.perrotin.com/random-eater/data.json')
-		.then( res => { this.jsonData = res.data} );
 	}
 }
 </script>
